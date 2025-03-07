@@ -1,6 +1,8 @@
-# x-trident-aw109sp-add-ins
+# x-Trident-AW109SP-add-ins
 Add ins for the excellent AW109SP produced by x-Trident.
 These add-ins are not produced by x-Trident, so if these add-ins don't work , its not their fault. 
+
+They need some tidying which wil be done in next days (by 09 Mar 2025), there are some audio panel functions in one of the scripts which need to be in their own script. 
 
 Things that have been implemented up to now. 
 
@@ -8,7 +10,8 @@ Commands for some datarefs which mean they can be mapped to joystick buttons.
 
 Fuel panel. 
 Forward Overhead Panel.
-Some Autopilot buttons. 
+Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, CRS). Some Honeycomb Bravo mapping to allow the changing of heading / alt etc by mapping the bravo knobs to individual controls and using the AW109 datarefs. 
+Transmitter selector on the P1 Audio Panel. 
 
 Mapping of axes for linear "things" like rotor brake lever position and "emergency / parking" brake position. 
 
