@@ -5,12 +5,17 @@ Not produced by x-Trident, so if these add ins don't work , its not their fault.
 Things that have been implemented up to now. 
 
 Commands for some datarefs which mean they can be mapped to joystick buttons.
-Mapping of axes for linear things like rotor brake lever position and emergency / parking brake positions. 
+
+Fuel panel. 
+Forward Overhead Panel.
+Some Autopilot buttons. 
+
+Mapping of axes for linear "things" like rotor brake lever position and "emergency / parking" brake position. 
 
 The xlua scripts should be placed into the plugins/xlua/scripts directory. 
-Each script must be located inside a folder of the same name. 
+Each script must be located inside a folder of the same name, the scripts must use the .lua extension in their file name.
 
-Script names have been chosen to avoid know x-Trident offical script names so should be able to co-exist. 
+Script names have been chosen to avoid known x-Trident offical script names so should be able to co-exist. 
 
 **Things to Note**
 If a button is mapped to a switch, sometimes you have to move the switch twice to toggle the button. 
