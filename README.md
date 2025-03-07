@@ -1,6 +1,6 @@
 # x-trident-aw109sp-add-ins
-Add ins for the excellent AW109SP produced by x-Trident
-Not produced by x-Trident, so if these add ins don't work , its not their fault. 
+Add ins for the excellent AW109SP produced by x-Trident.
+These add-ins are not produced by x-Trident, so if these add-ins don't work , its not their fault. 
 
 Things that have been implemented up to now. 
 
