@@ -1,22 +1,27 @@
+--See Github for my unofficial explanation of naming conventions
 ----------------------------------- DATAREFS -----------------------------------
-dr_button_apms_ap1 = find_dataref("aw109/cockpit/button/apms/ap1");
-dr_button_apms_ap2 = find_dataref("aw109/cockpit/button/apms/ap2");
+dr_button_apms_ap1 = find_dataref("aw109/cockpit/button/apms/ap1")
+dr_button_apms_ap2 = find_dataref("aw109/cockpit/button/apms/ap2")
 
-dr_ap1_status = find_dataref("aw109/autopilot/status/ap1");
-dr_ap2_status = find_dataref("aw109/autopilot/status/ap2");
+dr_ap1_status = find_dataref("aw109/autopilot/status/ap1")
+dr_ap2_status = find_dataref("aw109/autopilot/status/ap2")
 
 dr_apms_alt_push = find_dataref("aw109/cockpit/button/apms/alt_push")
 dr_apms_hdg = find_dataref("aw109/cockpit/button/apms/hdg")
 dr_apms_nav = find_dataref("aw109/cockpit/button/apms/nav")
 dr_apms_ias_push = find_dataref("aw109/cockpit/button/apms/ias_push")
 
-dr_autopilot_heading = find_dataref("aw109/cockpit/autopilot/heading");
-dr_autopilot_heading_delta = find_dataref("aw109/autopilot_heading_delta");
-dr_autopilot_altitude = find_dataref("sim/cockpit/autopilot/altitude");
-dr_autopilot_vs = find_dataref("aw109/autopilot/vertical_velocity_att_hold");
-dr_vertical_delta = find_dataref("aw109/autopilot_vertical_delta");
+dr_apms_hov_button = find_dataref("aw109/cockpit/button/apms/hov")
 
-dr_autopilot_vertical_velocity = find_dataref("sim/cockpit/autopilot/vertical_velocity"); -- this is change to current setting. 
+dr_apms_rht_push = find_dataref("aw109/cockpit/button/apms/rht_push")
+
+dr_autopilot_heading = find_dataref("aw109/cockpit/autopilot/heading")
+dr_autopilot_heading_delta = find_dataref("aw109/autopilot_heading_delta")
+dr_autopilot_altitude = find_dataref("sim/cockpit/autopilot/altitude")
+dr_autopilot_vs = find_dataref("aw109/autopilot/vertical_velocity_att_hold")
+dr_vertical_delta = find_dataref("aw109/autopilot_vertical_delta")
+
+dr_autopilot_vertical_velocity = find_dataref("sim/cockpit/autopilot/vertical_velocity") -- this is change to current setting. 
 
 IAS_KNOB = 0
 NAV_KNOB = 1
@@ -94,7 +99,7 @@ function handle_ap_2_toggle(phase,duration)
 	end
 end
 
-function handle_ap_alt(phase,duration)
+function handle_ap_alt_toggle(phase,duration)
 	if phase == 0 then
 		dr_apms_alt_push = 1
 	elseif	phase == 2 then
@@ -102,8 +107,7 @@ function handle_ap_alt(phase,duration)
 	end
 end
 
-
-function handle_ap_ias(phase,duration)
+function handle_ap_ias_toggle(phase,duration)
 	if phase == 0 then
 		dr_apms_ias_push = 1
 	elseif	phase == 2 then
@@ -111,7 +115,7 @@ function handle_ap_ias(phase,duration)
 	end
 end
 
-function handle_ap_hdg(phase,duration)
+function handle_ap_hdg_toggle(phase,duration)
 	if phase == 0 then
 		dr_apms_hdg = 1
 	elseif	phase == 2 then
@@ -119,11 +123,27 @@ function handle_ap_hdg(phase,duration)
 	end
 end
 
-function handle_ap_nav(phase,duration)
+function handle_ap_nav_toggle(phase,duration)
 	if phase == 0 then
 		dr_apms_nav = 1
 	elseif	phase == 2 then
 		dr_apms_nav = 0
+	end
+end
+
+function handle_ap_hov_toggle(phase,duration)
+	if phase == 0 then
+		dr_apms_hov_button = 1
+	elseif	phase == 2 then
+		dr_apms_hov_button = 0
+	end
+end
+
+function handle_ap_rht_toggle(phase,duration)
+	if phase == 0 then
+		dr_apms_rht_push = 1
+	elseif	phase == 2 then
+		dr_apms_rht_push= 0
 	end
 end
 
@@ -226,11 +246,15 @@ cmd_ap_2_off	   = create_command("aw109/apms/ap2_off",       "AW109_APMS_AP2_OFF
 
 cmd_ap_1and2	   = create_command("aw109/apms/ap1and2",       "AW109_APMS_AP1AND2",       handle_ap_1and2)
 
-cmd_ap_alt	   = create_command("aw109/apms/ap_alt",       "AW109_APMS_ALT",       handle_ap_alt)
-cmd_ap_ias   = create_command("aw109/apms/ap_ias",       "AW109_APMS_IAS",       handle_ap_ias)
+cmd_ap_alt	   = create_command("aw109/apms/ap_alt",       "AW109_APMS_ALT",       handle_ap_alt_toggle)
+cmd_ap_ias   = create_command("aw109/apms/ap_ias",       "AW109_APMS_IAS",       handle_ap_ias_toggle)
 
-cmd_ap_hdg	   = create_command("aw109/apms/ap_hdg",       "AW109_APMS_HDG",       handle_ap_hdg)
-cmd_ap_nav	   = create_command("aw109/apms/ap_nav",       "AW109_APMS_NAV",       handle_ap_nav)
+cmd_ap_hdg	   = create_command("aw109/apms/ap_hdg",       "AW109_APMS_HDG",       handle_ap_hdg_toggle)
+cmd_ap_nav	   = create_command("aw109/apms/ap_nav",       "AW109_APMS_NAV",       handle_ap_nav_toggle)
+
+cmd_ap_hov	   = create_command("aw109/apms/ap_hov",       "AW109_APMS_HOV",       handle_ap_hov_toggle)
+cmd_ap_rht	   = create_command("aw109/apms/ap_rht",       "AW109_APMS_RHT",       handle_ap_rht_toggle)
+
 
 cmd_honeycomb_alt_mode	   = create_command("aw109/honeycomb/alt",       "HONEYCOMB_ALT_KNOB",       handle_honeycomb_alt)
 cmd_honeycomb_hdg_mode	   = create_command("aw109/honeycomb/hdg",       "HONEYCOMB_HDG_KNOB",       handle_honeycomb_hdg)
