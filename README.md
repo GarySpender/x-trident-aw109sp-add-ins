@@ -2,15 +2,13 @@
 Add ins for the excellent AW109SP produced by x-Trident.
 These add-ins are not produced by x-Trident, so if these add-ins don't work , its not their fault. 
 
-They need some tidying which wil be done in next days (by 09 Mar 2025), there are some audio panel functions in one of the scripts which need to be in their own script. 
-
 Things that have been implemented up to now. 
 
 Commands for some datarefs which mean they can be mapped to joystick buttons.
 
-Fuel panel. 
+Fuel panel - Valves on / off, valve toggle (if you have an on switch), fuel pumps. 
 
-Forward Overhead Panel.
+Forward Overhead Panel - Battery , Generators, Gen Busses, Avionics Master Switch and power lever monunted start buttons. 
 
 Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, RHT, HOV). Some of the other APMS buttons are already provided by xTrident by default and I do not plan to duplicate any of their work. 
 
