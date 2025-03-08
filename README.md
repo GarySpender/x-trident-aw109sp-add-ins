@@ -20,6 +20,8 @@ Each script must be located inside a folder of the same name, the scripts must u
 
 Script names have been chosen to avoid known x-Trident offical script names so should be able to co-exist. 
 
+I have started to create a Wiki for this small project to describe someo the issues faced when mapping hardware to software functions, this can be found at https://github.com/GarySpender/x-trident-aw109sp-add-ins/wiki
+
 **Things to Note**
 If a button is mapped to a switch, sometimes you have to move the switch twice to toggle the button. 
 Also if a button is mapped to a switch, then things like AP1 and AP2 will re-engage if they are powered up and the switch is in the On position. 
