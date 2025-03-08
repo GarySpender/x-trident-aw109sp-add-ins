@@ -10,7 +10,8 @@ Commands for some datarefs which mean they can be mapped to joystick buttons.
 
 Fuel panel. 
 Forward Overhead Panel.
-Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, CRS). Some Honeycomb Bravo mapping to allow the changing of heading / alt etc by mapping the bravo knobs to individual controls and using the AW109 datarefs. 
+Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, CRS).
+Some Honeycomb Bravo mapping to allow the changing of heading / alt etc by mapping the bravo knobs to individual controls and using the AW109 datarefs. 
 Transmitter selector on the P1 Audio Panel. 
 
 Mapping of axes for linear "things" like rotor brake lever position and "emergency / parking" brake position. 
