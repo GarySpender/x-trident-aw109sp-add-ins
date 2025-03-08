@@ -1,5 +1,4 @@
 ----------------------------------- DATAREFS -----------------------------------
-
 dr_fuel_valve1          = find_dataref("aw109/cockpit/switch/fuel/sov1") 	
 dr_fuel_valve2          = find_dataref("aw109/cockpit/switch/fuel/sov2") 	
 
@@ -30,6 +29,34 @@ function after_physics()
 
 end
 
+--This is the way to map two switches to on and of rather immply, off by using not on. 
+--This is the preferred method
+function handle_fuel_valve_1_on(phase,duration)
+	if phase == 0 then
+		dr_fuel_valve1 = 1
+	end
+end
+
+function handle_fuel_valve_1_off(phase,duration)
+	if phase == 0 then
+		dr_fuel_valve1 = 0
+	end
+end
+
+function handle_fuel_valve_2_on(phase,duration)
+	if phase == 0 then
+		dr_fuel_valve2 = 1
+	end
+end
+
+function handle_fuel_valve_2_off(phase,duration)
+	if phase == 0 then
+		dr_fuel_valve2 = 0
+	end
+end
+
+--This method works if you only have an on toggle switch and no off switch, it will not work until the switch has been movedi into the on position
+--This is not the best way to do this. 
 function handle_fuel_valve_1(phase,duration)
 	if phase == 0 then
 		dr_fuel_valve1 = 0
@@ -81,7 +108,13 @@ end
 ---TBD: check that using button code works correctly for switches.
 --- FUEL PANEL
 cmd_fuel_valve_1 	   = create_command("aw109/fuelpanel/valve_1",       "AW109_FUEL_SOV1",       handle_fuel_valve_1)
+cmd_fuel_valve_1_on 	   = create_command("aw109/fuelpanel/valve_1_off",       "AW109_FUEL_SOV1_ON",       handle_fuel_valve_1_on)
+cmd_fuel_valve_1_off 	   = create_command("aw109/fuelpanel/valve_1_on",       "AW109_FUEL_SOV1_OFF",       handle_fuel_valve_1_off)
+
 cmd_fuel_valve_2	   = create_command("aw109/fuelpanel/valve_2",       "AW109_FUEL_SOV2",       handle_fuel_valve_2)
+cmd_fuel_valve_2_on 	   = create_command("aw109/fuelpanel/valve_2_off",       "AW109_FUEL_SOV2_ON",       handle_fuel_valve_2_on)
+cmd_fuel_valve_2_off 	   = create_command("aw109/fuelpanel/valve_2_on",       "AW109_FUEL_SOV2_OFF",       handle_fuel_valve_2_off)
+
 
 cmd_fuel_pump_1    = create_command("aw109/fuelpanel/pump_1",       "AW109_FUEL_PUMP1",       handle_fuel_pump_1)
 cmd_fuel_pump_2	   = create_command("aw109/fuelpanel/pump_2",       "AW109_FUEL_PUMP2",       handle_fuel_pump_2)

@@ -1,5 +1,5 @@
+--Scrip to map most of the overhead forward panel electrical switches
 ----------------------------------- DATAREFS -----------------------------------
-
 dr_genbus1_engage = find_dataref("aw109/cockpit/switch/electrical/gen_bus1");
 dr_genbus2_engage = find_dataref("aw109/cockpit/switch/electrical/gen_bus2");
 
@@ -12,8 +12,6 @@ dr_avionics_master = find_dataref("aw109/cockpit/switch/electrical/mstr_avnx")
 
 dr_gen1_switch = find_dataref("aw109/cockpit/switch/electrical/gen1");
 dr_gen2_switch = find_dataref("aw109/cockpit/switch/electrical/gen2");
-
-dr_p1_audio_panel_transmit_selector = find_dataref("aw109/cockpit/knob/acp/transmit_sel");
 
 dr_starter_1 = find_dataref("aw109/cockpit/button/engine/starter1");
 dr_starter_2 = find_dataref("aw109/cockpit/button/engine/starter2");
@@ -37,41 +35,25 @@ dr_pitot_heat_2 = find_dataref("aw109/cockpit/switch/misc/pitot2")
 	--none
 --end
 
-
 -- REGULAR RUNTIME
 function after_physics()
 
 end
 
-function handle_p1_xmit1(phase,duration)
-	dr_p1_audio_panel_transmit_selector = 1;
-end
-
-
-function handle_p1_xmit2(phase,duration)
-	dr_p1_audio_panel_transmit_selector = 2;
-end
-
-
-function handle_p1_xmit3(phase,duration)
-	dr_p1_audio_panel_transmit_selector = 3;
-end
-
-
-function handle_p1_xmit4(phase,duration)
-	dr_p1_audio_panel_transmit_selector = 4;
-end
-
-
-function handle_p1_xmit5(phase,duration)
-	dr_p1_audio_panel_transmit_selector = 5;
-end
-
+--Single switch mapped to do on and off
 function handle_genbus_1(phase,duration)
 	if phase == 0 then
 		dr_genbus1_engage = 1
 	elseif	phase == 2 then
 		dr_genbus1_engage = 0
+	end
+end
+
+function handle_genbus_2(phase,duration)
+	if phase == 0 then
+		dr_genbus2_engage = 1
+	elseif	phase == 2 then
+		dr_genbus2_engage = 0
 	end
 end
 
@@ -92,14 +74,6 @@ function handle_pitot_2_toggle(phase,duration)
 			elseif dr_pitot_heat_2 == 1 then
 			dr_pitot_heat_2  =0
 		end
-	end
-end
-
-function handle_genbus_2(phase,duration)
-	if phase == 0 then
-		dr_genbus2_engage = 1
-	elseif	phase == 2 then
-		dr_genbus2_engage = 0
 	end
 end
 
@@ -151,7 +125,6 @@ function handle_avionics_master_switch(phase,duration)
 	end
 end
 
-
 function handle_generator_switches(phase,duration)
 	handle_gen1_switch(phase,duration)
 	handle_gen2_switch(phase,duration)
@@ -165,7 +138,6 @@ function handle_engine_starter_1_button_push(phase, duration)
 	end
 end
 
-
 function handle_engine_starter_2_button_push(phase, duration)
 	if phase == 0 then
 		dr_starter_2=1 
@@ -174,9 +146,7 @@ function handle_engine_starter_2_button_push(phase, duration)
 	end
 end
 
-
 ---TBD: check that using button code works correctly for switches.
-
 cmd_genbus_1	   = create_command("aw109/overhead/genbus1",       "AW109_OVERHEAD_GENBUS1",       handle_genbus_1)
 cmd_genbus_2	   = create_command("aw109/overhead/genbus2",       "AW109_OVERHEAD_GENBUS2",       handle_genbus_2)
 
@@ -194,9 +164,3 @@ cmd_avionic_master = create_command("aw109/overhead/avionics_master",       "AW1
 
 cmd_pitot_1	   = create_command("aw109/overhead/pitot1_toggle",       "AW109_OVERHEAD_PITOT1_TOGGLE",       handle_pitot_1_toggle)
 cmd_pitot_2	   = create_command("aw109/overhead/pitot2_toggle",       "AW109_OVERHEAD_PITOT2_TOGGLE",       handle_pitot_2_toggle)
-
-cmd_p1_xmit_1	   = create_command("aw109/intercom/xmit1",       "P1_XMIT1",       handle_p1_xmit1)
-cmd_p1_xmit_2	   = create_command("aw109/intercom/xmit2",       "P1_XMIT2",       handle_p1_xmit2)
-cmd_p1_xmit_3      = create_command("aw109/intercom/xmit3",       "P1_XMIT3",       handle_p1_xmit3)
-cmd_p1_xmit_4	   = create_command("aw109/intercom/xmit4",       "P1_XMIT4",       handle_p1_xmit4)
-cmd_p1_xmit_5	   = create_command("aw109/intercom/xmit5",       "P1_XMIT5",       handle_p1_xmit5)
