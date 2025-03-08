@@ -12,9 +12,9 @@ Fuel panel.
 
 Forward Overhead Panel.
 
-Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, CRS).
+Some Autopilot buttons (AP1, AP2, HDG, IAS, ALT, NAV, RHT, HOV). Some of the other APMS buttons are already provided by xTrident by default and I do not plan to duplicate any of their work. 
 
-Some Honeycomb Bravo mapping to allow the changing of heading / alt etc by mapping the bravo knobs to individual controls and using the AW109 datarefs. 
+Some Honeycomb Bravo mapping to allow the changing of heading / alt / ias / crs / vs etc by mapping the bravo knobs to individual controls and using the AW109 datarefs. 
 
 Engine Mode Switches (without a physical rotary switch to map).
 
