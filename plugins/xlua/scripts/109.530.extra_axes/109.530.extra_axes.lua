@@ -3,9 +3,8 @@ xpdr_joy_mapped_axis_avail = find_dataref("sim/joystick/joy_mapped_axis_avail")
 xpdr_joy_mapped_axis_value = find_dataref("sim/joystick/joy_mapped_axis_value")
 
 dr_rotor_brake               = find_dataref("aw109/cockpit/lever/rotor/rotor_brake")
-
 dr_park_brake               = find_dataref("aw109/cockpit/lever/gear/emer_brake")
-
+dr_nosewheel_lock               = find_dataref("aw109/cockpit/lever/gear/nosewheel_lock")
 ----------------------------------- ENUMS -----------------------------------
 local joy_use_none          = 00
 local joy_use_ptch          = 01
@@ -66,7 +65,7 @@ local joy_use_thro7         = 55 -- radio 1 brt
 local joy_use_thro8         = 56 -- radio 0 brt 
 local joy_use_cowl_flaps1   = 57 -- wxr gain
 local joy_use_cowl_flaps2   = 58 -- wxr tilt
-local joy_use_cowl_flaps3   = 59
+local joy_use_cowl_flaps3   = 59 -- nose wheel lock
 local joy_use_cowl_flaps4   = 60
 local joy_use_cowl_flaps5   = 61
 local joy_use_cowl_flaps6   = 62
@@ -93,8 +92,8 @@ function after_physics()
 	if xpdr_joy_mapped_axis_avail[joy_use_thro6] > 0 then
 		dr_park_brake = xpdr_joy_mapped_axis_value[joy_use_thro6]
 	end
-
 	
-
+	if xpdr_joy_mapped_axis_avail[joy_use_cowl_flaps_3] > 0 then
+		dr_nosewheel_lock = xpdr_joy_mapped_axis_value[joy_use_cowl_flaps_3]
+	end
 end
-
